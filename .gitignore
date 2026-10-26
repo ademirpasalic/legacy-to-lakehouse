@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Generated data: recreate with scripts/generate_legacy_data.py
+data/
