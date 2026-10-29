@@ -33,7 +33,7 @@ def with_duplicates(rows, rng):
     return out
 
 
-def prod_038_excel(rng):
+def prod_039_excel(rng):
     """Old Excel sheet: Danish-ish headers, dd-mm-yyyy dates, mixed shot codes."""
     statuses = ["WIP", "igang", "done", "Færdig", "venter", "ikke startet"]
     rows = []
@@ -50,7 +50,7 @@ def prod_038_excel(rng):
     return with_duplicates(rows, rng)
 
 
-def prod_112_sheets(rng):
+def prod_051_sheets(rng):
     """Google Sheets: English headers, ISO dates, zero-padded codes, short statuses."""
     statuses = ["in progress", "ip", "approved", "apr", "on hold", "not started"]
     rows = []
@@ -66,7 +66,7 @@ def prod_112_sheets(rng):
     return with_duplicates(rows, rng)
 
 
-def prod_187_coda(rng):
+def prod_077_coda(rng):
     """Coda JSON: nested-ish records, timestamps, frames sometimes as text."""
     statuses = ["In Progress", "Approved", "Not Started", "On Hold", "Final"]
     rows = []
@@ -94,10 +94,10 @@ def main():
     rng = random.Random(SEED)
     OUT_DIR.mkdir(parents=True, exist_ok=True)
 
-    write_csv(OUT_DIR / "prod_038_shots_excel.csv", prod_038_excel(rng))
-    write_csv(OUT_DIR / "prod_112_shots_sheets.csv", prod_112_sheets(rng))
-    with (OUT_DIR / "prod_187_shots_coda.json").open("w", encoding="utf-8") as f:
-        json.dump(prod_187_coda(rng), f, indent=2, ensure_ascii=False)
+    write_csv(OUT_DIR / "prod_039_shots_excel.csv", prod_039_excel(rng))
+    write_csv(OUT_DIR / "prod_051_shots_sheets.csv", prod_051_sheets(rng))
+    with (OUT_DIR / "prod_077_shots_coda.json").open("w", encoding="utf-8") as f:
+        json.dump(prod_077_coda(rng), f, indent=2, ensure_ascii=False)
 
     for p in sorted(OUT_DIR.iterdir()):
         print(f"wrote {p.relative_to(OUT_DIR.parent.parent)}")

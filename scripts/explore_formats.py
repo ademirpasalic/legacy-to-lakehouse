@@ -12,7 +12,7 @@ import pandas as pd
 from deltalake import DeltaTable, write_deltalake
 
 DATA = Path(__file__).resolve().parent.parent / "data"
-CSV_PATH = DATA / "legacy" / "prod_112_shots_sheets.csv"
+CSV_PATH = DATA / "legacy" / "prod_051_shots_sheets.csv"
 PARQUET_PATH = DATA / "scratch" / "shots.parquet"
 DELTA_PATH = DATA / "scratch" / "shots_delta"
 
