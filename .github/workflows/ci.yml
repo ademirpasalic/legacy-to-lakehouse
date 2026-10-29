@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  migrate-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Unit and pipeline tests
+        run: pytest -q
+
+      - name: Run the migration on the generated legacy data
+        run: |
+          python scripts/generate_legacy_data.py
+          python -m src.ingest_bronze
+          python -m src.transform_silver
+
+      # Fails the build if any shot was lost or invented
+      - name: Reconcile
+        run: python -m src.reconcile
