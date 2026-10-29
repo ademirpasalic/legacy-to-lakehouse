@@ -1,6 +1,6 @@
 # Legacy-to-Lakehouse Migration Kit
 
-A practice data migration. Three productions tracked their shots in their own spreadsheets: an old Excel file, a Google Sheet and a Coda doc. Different columns, different status spellings, different date formats, duplicates and blanks. This repo moves all of it into one shared Delta Lake table, puts the rows that can't be fixed in a quarantine table, and checks that nothing was lost on the way.
+A small data migration project. Three productions tracked their shots in their own spreadsheets: an old Excel file, a Google Sheet and a Coda doc. Different columns, different status spellings, different date formats, duplicates and blanks. This repo moves all of it into one shared Delta Lake table, puts the rows that can't be fixed in a quarantine table, and checks that nothing was lost on the way.
 
 It's based on a real migration I did at work, moving production staff from
 their own sheets into one shared system. All data in this repo is made up
